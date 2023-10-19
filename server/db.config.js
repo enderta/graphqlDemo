@@ -4,11 +4,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const pool = new Pool({
-    /* user: process.env.DB_USER || "postgres",
-    host: process.env.DB_HOST || "localhost",
-    database: process.env.DB_DATABASE || "jobs",
-    password: process.env.DB_PASSWORD || "ender",
-    port: process.env.DB_PORT || 5432, */
+   
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false,
