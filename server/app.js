@@ -2,18 +2,13 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
-const SECRET = 'secret'; // replace YOUR_SECRET_KEY with your actual secret key
-const jwt = require('jsonwebtoken');
 
 const server = new ApolloServer({
     typeDefs,
     resolvers,
     introspection: true,
-    context: ({req}) => {
-        const token = req.headers.authorization;
-        const user = token ? jwt.verify(token.replace('Bearer ', ''), SECRET) : null;
-        return {user};
-    }
+    playground: true,
+    
 });
 
 const app = express();
