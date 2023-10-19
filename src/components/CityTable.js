@@ -23,39 +23,49 @@ function CityTable() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  // Function to convert timestamp strings to Date objects
-  const parseDate = (timestampString) => {
+  // Function to format timestamp strings as "dd/mm/yyyy" (day/month/year)
+  const formatDate = (timestampString) => {
     if (timestampString) {
       const timestamp = parseInt(timestampString, 10);
-      return new Date(timestamp).toLocaleDateString('en-GB').split(',')[0];
+      return new Date(timestamp).toLocaleDateString('en-GB'); // Use 'en-GB' for dd/mm/yyyy format
     }
-    return ''; 
+    return ''; // Handle cases where the timestampString is null or undefined
   };
 
   return (
-    <div>
-      <table style={{ border: '1px solid black', borderCollapse: 'collapse' }}>
-        <thead>
-          <tr>
-            {Object.keys(data.cities[0]).filter((key) => key !== '__typename').map((key) => (
-              <th key={key} style={{ border: '1px solid black' }}>
-                {key}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data.cities.map((city) => (
-            <tr key={city.city_id}>
-              {Object.keys(city).filter((key) => key !== '__typename').map((key) => (
-                <td key={key} style={{ border: '1px solid black' }}>
-                  {key === 'created_at' || key === 'updated_at' ? parseDate(city[key]) : city[key]}
-                </td>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-8"> {/* Adjust the col size */}
+          <h4 className="text-center my-4">Cities</h4>
+
+          <table className="table table-bordered table-sm"> {/* Apply 'table-sm' class for a smaller table */}
+            <thead>
+              <tr>
+                {Object.keys(data.cities[0])
+                  .filter((key) => key !== "__typename")
+                  .map((key) => (
+                    <th key={key}>{key}</th>
+                  ))}
+              </tr>
+            </thead>
+            <tbody>
+              {data.cities.map((city) => (
+                <tr key={city.city_id}>
+                  {Object.keys(city)
+                    .filter((key) => key !== "__typename")
+                    .map((key) => (
+                      <td key={key} style={{ border: "1px solid black" }}>
+                        {key === "created_at" || key === "updated_at"
+                          ? formatDate(city[key])
+                          : city[key]}
+                      </td>
+                    ))}
+                </tr>
               ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
