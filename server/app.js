@@ -8,7 +8,7 @@ const server = new ApolloServer({
     resolvers,
     introspection: true,
     playground: true,
-    
+
 });
 
 const app = express();
@@ -18,6 +18,6 @@ const startServer = async () => {
 }
 startServer().then(r => console.log('Server started!'));
 
-app.listen({ port: 4000 }, () =>
+app.listen({ port: process.env.PORT }, () =>
     console.log(`🚀 Server ready at http://localhost:${process.env.PORT}${server.graphqlPath}`)
 )
