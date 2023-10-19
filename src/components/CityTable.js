@@ -1,5 +1,7 @@
 import React from 'react';
 import { gql, useQuery } from '@apollo/client';
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 const GET_CITIES = gql`
   query GetCities {
@@ -33,14 +35,14 @@ function CityTable() {
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-8"> {/* Adjust the col size */}
+    <div>
           <h4 className="text-center my-4">Cities</h4>
+          <div className="d-flex justify-content-center">
+          <div className="table-responsive">
 
-          <table className="table table-bordered table-sm"> {/* Apply 'table-sm' class for a smaller table */}
-            <thead>
-              <tr>
+          <table class="table table-hover table-bordered table-striped ">
+            <thead >
+            <tr class="bg-primary">
                 {Object.keys(data.cities[0])
                   .filter((key) => key !== "__typename")
                   .map((key) => (
@@ -49,8 +51,11 @@ function CityTable() {
               </tr>
             </thead>
             <tbody>
-              {data.cities.map((city) => (
-                <tr key={city.city_id}>
+              {data.cities.map((city, index) => (
+                <tr
+                  key={city.city_id}
+                
+                >
                   {Object.keys(city)
                     .filter((key) => key !== "__typename")
                     .map((key) => (
@@ -64,9 +69,10 @@ function CityTable() {
               ))}
             </tbody>
           </table>
-        </div>
-      </div>
-    </div>
+          </div>
+          </div>
+   </div>
+       
   );
 }
 
