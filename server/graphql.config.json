@@ -1,0 +1,17 @@
+{
+  "name": "My Project",
+  "schemaPath": "/home/ender/IdeaProjects/metricsdashboard/server/schema.js",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "http://localhost:4000/graphql",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": true
+      }
+    }
+  },
+  "projects": {
+  }
+}

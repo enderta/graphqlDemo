@@ -1,24 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import CityTable from './components/CityTable';
+import ApolloAppProvider from '../src/components/ApolloProvider';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <ApolloAppProvider>
+   <div>
+    <CityTable />
     </div>
+    </ApolloAppProvider>
   );
 }
 
