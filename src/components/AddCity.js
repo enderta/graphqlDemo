@@ -1,5 +1,28 @@
 import React, { useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
+import { Card, Form, Button } from 'react-bootstrap';
+
+const CREATE_CITY = gql`
+  mutation CreateCity(
+    $location: String,
+    $description: String,
+    $email: String,
+    $slackchannel: String,
+    $slackchannelid: String,
+    $updated_by: Int
+  ) {
+    createCity(
+      location: $location,
+      description: $description,
+      email: $email,
+      slackchannel: $slackchannel,
+      slackchannelid: $slackchannelid,
+      updated_by: $updated_by
+    ) {
+      city_id
+    }
+  }
+`;
 
 function AddCity() {
   const [city, setCity] = useState({
@@ -12,19 +35,12 @@ function AddCity() {
   });
 
   const handleChange = (e) => {
+    e.preventDefault();
     setCity({
       ...city,
       [e.target.name]: e.target.value,
     });
   }
-
-  const CREATE_CITY = gql`
-    mutation CreateCity($input: cityInput!) {
-      createCity(input: $input) {
-        city_id
-      }
-    }
-  `;
 
   const [createCity] = useMutation(CREATE_CITY);
 
@@ -33,31 +49,61 @@ function AddCity() {
 
     createCity({
       variables: {
-        input: {
-          location: city.location,
-          description: city.description,
-          email: city.email,
-          slackchannel: city.slackchannel,
-          slackchannelid: city.slackchannelid,
-          updated_by: city.updated_by
-        }
+        ...city,
+        updated_by: Number(city.updated_by)
       }
     });
-    window.location.href = "/cities";
+    setCity({
+      location: '',
+      description: '',
+      email: '',
+      slackchannel: '',
+      slackchannelid: '',
+      updated_by: Number('')
+    });
+    window.location.href = '/home';
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="location" value={city.location} onChange={handleChange} />
-        <input type="text" name="description" value={city.description} onChange={handleChange} />
-        <input type="email" name="email" value={city.email} onChange={handleChange} />
-        <input type="text" name="slackchannel" value={city.slackchannel} onChange={handleChange} />
-        <input type="text" name="slackchannelid" value={city.slackchannelid} onChange={handleChange} />
-        <input type="text" name="updated_by" value={city.updated_by} onChange={handleChange} />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId="location">
+            <Form.Label>Location</Form.Label>
+            <Form.Control type="text" name="location" value={city.location} onChange={handleChange} />
+          </Form.Group>
+
+          <Form.Group controlId="description">
+            <Form.Label>Description</Form.Label>
+            <Form.Control type="text" name="description" value={city.description} onChange={handleChange} />
+          </Form.Group>
+
+          <Form.Group controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" name="email" value={city.email} onChange={handleChange} />
+          </Form.Group>
+
+          <Form.Group controlId="slackchannel">
+            <Form.Label>Slack Channel</Form.Label>
+            <Form.Control type="text" name="slackchannel" value={city.slackchannel} onChange={handleChange} />
+          </Form.Group>
+
+          <Form.Group controlId="slackchannelid">
+            <Form.Label>Slack Channel ID</Form.Label>
+            <Form.Control type="text" name="slackchannelid" value={city.slackchannelid} onChange={handleChange} />
+          </Form.Group>
+
+          <Form.Group controlId="updated_by">
+            <Form.Label>Updated By</Form.Label>
+            <Form.Control type="text" name="updated_by" value={Number(city.updated_by)} onChange={handleChange} />
+          </Form.Group>
+
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </Card.Body>
+    </Card>
   )
 }
 

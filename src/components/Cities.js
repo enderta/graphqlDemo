@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { gql, useQuery, useMutation } from '@apollo/client';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -35,6 +36,7 @@ export default function Cities() {
     await deleteCity({ variables: { id } });
     refetch();
   };
+
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
