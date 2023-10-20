@@ -14,7 +14,7 @@ type city{
 
 }
 type Query {
-    cities: [city!]
+    cities: [city]
     city(id: Int!): city
 }
 type Mutation {
@@ -23,12 +23,12 @@ type Mutation {
     deleteCity(id: Int!): city
 }
 input cityInput {
-    location: String!
-    description: String!
-    email: String!
-    slackchannel: String!
-    slackchannelid: String!
-    updated_by: String!
+    location: String
+    description: String
+    email: String
+    slackchannel: String
+    slackchannelid: String
+    updated_by: String
 }
 `;
 

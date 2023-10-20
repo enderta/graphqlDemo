@@ -1,11 +1,11 @@
-import CityTable from './components/CityTable';
 import ApolloAppProvider from '../src/components/ApolloProvider';
+import Pages from './components/Pages';
 
 function App() {
   return (
     <ApolloAppProvider>
    <div>
-    <CityTable />
+   <Pages />
     </div>
     </ApolloAppProvider>
   );
