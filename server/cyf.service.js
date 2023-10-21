@@ -18,8 +18,8 @@ class CityService{
         return result.rows[0];
     }
 
-    async updateCity(id, {location, description, email, slackchannel, slackchannelid, updated_by}){
-        const result = await pool.query('UPDATE city SET location = $1, description = $2, email = $3, slackchannel = $4, slackchannelid = $5, updated_by = $6 WHERE city_id = $7 RETURNING *', [location, description, email, slackchannel, slackchannelid, updated_by, id]);
+    async updateCity(id, {location, description, email, slackchannel, slackchannelid,updated_at, updated_by}){
+        const result = await pool.query('UPDATE city SET location = $1, description = $2, email = $3, slackchannel = $4, slackchannelid = $5,updated_at = $6, updated_by = $7 WHERE city_id = $8 RETURNING *', [location, description, email, slackchannel, slackchannelid, updated_at, updated_by, id]);
         return result.rows[0];
     }
 

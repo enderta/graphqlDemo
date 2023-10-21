@@ -10,14 +10,14 @@ function CityTable(props) {
     <div>
      <Container fluid>
      
-     <h4 style={{ margin: "5px" }}>
+     <h3 style={{ margin: "10px",color:"goldenrod" }}>
         <Button variant="outline-success" as={Link} to={"/addcity"}>
-          <h6>
+          <h6 style={{ margin: "10px" }}>
           &#10133;
 
           </h6>
         </Button>
-      </h4>
+      </h3>
   
       <h3 className="text-center my-4">Cities</h3>
       <div className="d-flex justify-content-center">

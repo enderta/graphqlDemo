@@ -33,6 +33,7 @@ type Mutation {
         email: String,
         slackchannel: String,
         slackchannelid: String,
+         updated_at: String,
         updated_by: Int): city
     deleteCity(id: Int!): city
 }

@@ -54,6 +54,7 @@ function EditCity() {
       $email: String,
       $slackchannel: String,
       $slackchannelid: String,
+      $updated_at: String,
       $updated_by: Int
     ) {
       updateCity(
@@ -63,6 +64,7 @@ function EditCity() {
         email: $email,
         slackchannel: $slackchannel,
         slackchannelid: $slackchannelid,
+        updated_at: $updated_at,
         updated_by: $updated_by
       ) {
         city_id
@@ -84,6 +86,7 @@ function EditCity() {
           email: city.email,
           slackchannel: city.slackchannel,
           slackchannelid: city.slackchannelid,
+          updated_at: new Date().toISOString().slice(0, 10),
           updated_by: city.updated_by
         }
       });
@@ -98,7 +101,6 @@ function EditCity() {
 
   return (
     <div>
-   
     <Container className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
     <Row>
       <Col>
@@ -130,7 +132,6 @@ function EditCity() {
             <Form.Label>Slack Channel ID</Form.Label>
             <Form.Control type="text" name="slackchannelid" value={city.slackchannelid} onChange={handleChange} />
           </Form.Group>
-
           <Form.Group controlId="updated_by">
             <Form.Label>Updated By</Form.Label>
             <Form.Control type="number" name="updated_by" value={city.updated_by} onChange={handleChange} />
