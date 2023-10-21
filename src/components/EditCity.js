@@ -87,7 +87,7 @@ function EditCity() {
           slackchannel: city.slackchannel,
           slackchannelid: city.slackchannelid,
           updated_at: new Date().toISOString().slice(0, 10),
-          updated_by: city.updated_by,
+          updated_by:Number( city.updated_by),
         },
       });
       window.location.href = "/home";
