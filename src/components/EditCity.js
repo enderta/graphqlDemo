@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
-import { Card, Form, Button } from 'react-bootstrap';
+import { Card, Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 function EditCity() {
   const { id } = useParams();
@@ -97,9 +97,15 @@ function EditCity() {
   if (error) return <p>Error :(</p>;
 
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Body>
-        <Form onSubmit={handleSubmit}>
+    <div>
+   
+    <Container className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+    <Row>
+      <Col>
+        <Card>
+          <Card.Body >
+             <h3>Edit City</h3>
+              <Form onSubmit={handleSubmit}>
           <Form.Group controlId="location">
             <Form.Label>Location</Form.Label>
             <Form.Control type="text" name="location" value={city.location} onChange={handleChange} />
@@ -127,15 +133,22 @@ function EditCity() {
 
           <Form.Group controlId="updated_by">
             <Form.Label>Updated By</Form.Label>
-            <Form.Control type="text" name="updated_by" value={city.updated_by} onChange={handleChange} />
+            <Form.Control type="number" name="updated_by" value={city.updated_by} onChange={handleChange} />
           </Form.Group>
+          <br />
+                <Button variant="outline-success" type="submit">
+                  <h3>
+                  &#128640;
 
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
+                  </h3>
+                </Button>
         </Form>
       </Card.Body>
     </Card>
+  </Col>
+</Row>
+</Container>
+</div>
   )
 }
 

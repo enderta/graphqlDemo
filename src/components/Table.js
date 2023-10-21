@@ -1,20 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+import { Card, Container } from "react-bootstrap";
 
-function Table(props) {
-  const { data, formatDate, delete: handleDelete } = props;
-
+function CityTable(props) {
+  const { data, formatDate, handleDelete } = props;
   return (
     <div>
-      <h4 style={{ margin: "10px" }}>
-        <Link className="btn btn-success" to={"/addcity"}>
-          Add City
-        </Link>
+     <Container fluid>
+     
+     <h4 style={{ margin: "5px" }}>
+        <Button variant="outline-success" as={Link} to={"/addcity"}>
+          <h6>
+          &#10133;
+
+          </h6>
+        </Button>
       </h4>
-      <h4 className="text-center my-4">Cities</h4>
+  
+      <h3 className="text-center my-4">Cities</h3>
       <div className="d-flex justify-content-center">
         <div className="table-responsive">
-          <table className="table table-hover table-bordered table-striped">
+          <Table striped bordered hover>
             <thead>
               <tr className="bg-primary">
                 {Object.keys(data.cities[0])
@@ -38,27 +46,30 @@ function Table(props) {
                       </td>
                     ))}
                   <td>
-                    <Link
-                      className="btn btn-primary"
-                      to={ `/editcity/${city.city_id}` }
-                    >
-                      Edit
-                    </Link>
-                    <button
-                      className="btn btn-danger"
+                    <Button variant="outline-primary" style={{margin:"0px 10px 0px 0px"}} as={Link} to={`/editcity/${city.city_id}`}>
+                    
+                      <h6>
+                      &#9999;&#65039;
+                      </h6>
+                    </Button>
+                    <Button
+                      variant="outline-danger"
                       onClick={() => handleDelete(city.city_id)}
                     >
-                      Delete
-                    </button>
+                      <h6>
+                      &#10060;
+                      </h6>
+                    </Button>
                   </td>
                 </tr>
               ))}
             </tbody>
-          </table>
+          </Table>
         </div>
       </div>
+      </Container>
     </div>
   );
 }
 
-export default Table;
+export default CityTable;

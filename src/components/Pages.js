@@ -8,7 +8,7 @@ function Pages() {
     return (
         <div>
             <Routes>
-                <Route path="/home" element={<Cities />} />
+                <Route path="/*" element={<Cities />} />
                 <Route path="/addcity" element={<AddCity />} />
                 <Route path="/editcity/:id" element={<EditCity />} />
             </Routes>
