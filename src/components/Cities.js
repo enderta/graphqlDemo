@@ -1,8 +1,7 @@
-
-import React from 'react';
-import { gql, useQuery, useMutation } from '@apollo/client';
-import 'bootstrap/dist/css/bootstrap.css';
-import Table from './Table';
+import React from "react";
+import { gql, useQuery, useMutation } from "@apollo/client";
+import "bootstrap/dist/css/bootstrap.css";
+import Table from "./Table";
 
 const GET_CITIES = gql`
   query GetCities {
@@ -37,22 +36,20 @@ export default function Cities() {
     refetch();
   };
 
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
   const formatDate = (timestampString) => {
     if (timestampString) {
       const timestamp = parseInt(timestampString, 10);
-      return new Date(timestamp).toLocaleDateString('en-GB');
+      return new Date(timestamp).toLocaleDateString("en-GB");
     }
-    return '';
+    return "";
   };
 
   return (
     <div>
-     <Table data={data} formatDate={formatDate} handleDelete={handleDelete} />
-
+      <Table data={data} formatDate={formatDate} handleDelete={handleDelete} />
     </div>
   );
 }
