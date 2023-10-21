@@ -2,31 +2,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import { Card, Container } from "react-bootstrap";
+import {  Container } from "react-bootstrap";
 
 function CityTable(props) {
   const { data, formatDate, handleDelete } = props;
   return (
     <div>
       <Container fluid>
-        <h3 style={{ margin: "10px", color: "goldenrod" }}>
+        <h3 style={{ margin: "10px" }}>
           <Button variant="outline-success" as={Link} to={"/addcity"}>
             <h6 style={{ margin: "10px" }}>&#10133;</h6>
           </Button>
         </h3>
 
-        <h3 className="text-center my-4">Cities</h3>
+        <h3 className="text-center my-4" style={{color:"green"}}>Cities</h3>
         <div className="d-flex justify-content-center">
           <div className="table-responsive">
             <Table striped bordered hover>
-              <thead>
-                <tr className="bg-primary">
+              <thead >
+                <tr  className="bg-primary">
                   {Object.keys(data.cities[0])
                     .filter((key) => key !== "__typename")
                     .map((key) => (
-                      <th key={key}>{key}</th>
+                      <th style={{color:"goldenrod"}} key={key}>{key}</th>
                     ))}
-                  <th>Actions</th>
+                  <th style={{color:"goldenrod"}}>Actions</th>
                 </tr>
               </thead>
               <tbody>
