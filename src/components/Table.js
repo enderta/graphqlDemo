@@ -4,8 +4,8 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import {  Container } from "react-bootstrap";
 
-function CityTable(props) {
-  const { data, formatDate, handleDelete } = props;
+function CityTable({ data, formatDate, handleDelete }) {
+  
   return (
     <div>
       <Container fluid>
