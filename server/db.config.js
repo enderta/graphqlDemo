@@ -3,8 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const dbConnection =  'mongodb://localhost:27017/mydatabase';
-
+const dbConnection =  process.env.NOSQL_URI
 mongoose.connect(dbConnection, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
