@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('./userSchema'); // Import your user model
+const User = require('./userSchema');
+const Job = require('./JobSchema'); // Import your job schema
 require('dotenv').config();
 
 const SECRET = process.env.SECRET;
@@ -14,6 +15,14 @@ const resolvers = {
             return User.find();
         },
         getUser: async (_, { id }) => User.findById(id),
+        getJobs: async (_, __, context) => {
+            if (!context.user) {
+                throw new Error('Authentication required');
+            }
+            return Job.find();
+        },
+        getJob: async (_, { id }) => Job.findById(id),
+        getJobsByUserId: async (_, { id }) => Job.find({ user_id: id }),
     },
     Mutation: {
         createUser: async (_, { username, email, password }, context) => {
@@ -57,6 +66,31 @@ const resolvers = {
                 token,
                 user,
             };
+        },
+        createJob: async (_, { title, company, location, description, requirements, user_id },context) => {
+            if (!context.user) {
+                throw new Error('Authentication required');
+            }
+            const job = new Job({ title, company, location, description, requirements, user_id });
+            return await job.save();
+        },
+        updateJob: async (_, { id, title, company, location, description, requirements }, context) => {
+            if (!context.user) {
+                throw new Error('Authentication required');
+            }
+            const job = await Job.findById(id);
+            if (title) job.title = title;
+            if (company) job.company = company;
+            if (location) job.location = location;
+            if (description) job.description = description;
+            if (requirements) job.requirements = requirements;
+            return await job.save();
+        },
+        deleteJob: async (_, { id }, context) => {
+            if (!context.user) {
+                throw new Error('Authentication required');
+            }
+            return Job.findByIdAndRemove(id);
         },
     },
 };
