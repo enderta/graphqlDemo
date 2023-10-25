@@ -31,6 +31,7 @@ export default function Cities() {
   const { loading, error, data, refetch } = useQuery(GET_CITIES);
   const [deleteCity] = useMutation(DELETE_CITY);
 
+
   const handleDelete = async (id) => {
     await deleteCity({ variables: { id } });
     refetch();
@@ -46,6 +47,10 @@ export default function Cities() {
     }
     return "";
   };
+
+
+
+
 
   return (
     <div>

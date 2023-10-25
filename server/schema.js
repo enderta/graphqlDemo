@@ -11,7 +11,7 @@ const typeDefs = gql`
     is_applied: Boolean
     posted_at: String
     updated_at: String
-    user_id: ID!
+    user: User   # Reference to the User type
   }
 
   type Query {
@@ -37,6 +37,7 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String
+    jobs: [Job]   # Include a field to represent the user's jobs
   }
 
   type AuthData {
