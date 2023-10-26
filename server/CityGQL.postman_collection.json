@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "578e56d5-0be4-4621-a1b1-3d9677d83706",
+		"name": "CityGQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11898049"
+	},
+	"item": [
+		{
+			"name": "Cities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							" const responseData = pm.response.json();",
+							"",
+							"  console.log(responseData.data.cities.length)",
+							"",
+							"  pm.collectionVariables.set(\"number of cities\",responseData.data.cities.length)",
+							"",
+							"",
+							"  ",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Query {\n  cities {\n    city_id\n    location\n    description\n    email\n    slackchannel\n    slackchannelid\n    created_at\n    updated_at\n    updated_by\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							" const responseData = pm.response.json();",
+							"",
+							"  console.log(responseData.data.createCity)",
+							"",
+							"  pm.collectionVariables.set(\"id\",responseData.data.createCity.city_id)",
+							"",
+							"",
+							"  ",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation Mutation($location: String, $description: String, $email: String, $slackchannel: String, $slackchannelid: String, $updatedBy: Int) {\n  createCity(location: $location, description: $description, email: $email, slackchannel: $slackchannel, slackchannelid: $slackchannelid, updated_by: $updatedBy) {\n    city_id\n    location\n    description\n    email\n    slackchannel\n    slackchannelid\n    created_at\n    updated_at\n    updated_by\n  }\n}",
+						"variables": "{\n  \"location\": \"test\",\n  \"description\": \"test\",\n  \"email\": \"test\",\n  \"slackchannel\": \"test\",\n  \"slackchannelid\": \"test\",\n  \"updatedBy\": 1\n \n}"
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CitiesCheck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							" const responseData = pm.response.json();",
+							"",
+							"  console.log(responseData.data.cities.length)",
+							"",
+							"pm.expect(responseData.data.cities.length).to.eql(pm.collectionVariables.get(\"number of cities\")+1)",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Query {\n  cities {\n    city_id\n    location\n    description\n    email\n    slackchannel\n    slackchannelid\n    created_at\n    updated_at\n    updated_by\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CityUpdate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation Mutation($updateCityId: Int!, $location: String, $description: String, $email: String, $slackchannel: String, $slackchannelid: String, $updatedBy: Int) {\n  updateCity(id: $updateCityId, location: $location, description: $description, email: $email, slackchannel: $slackchannel, slackchannelid: $slackchannelid, updated_by: $updatedBy) {\n    city_id\n    location\n    description\n    email\n    slackchannel\n    slackchannelid\n    created_at\n    updated_at\n    updated_by\n  }\n}",
+						"variables": "{\n  \"location\": \"test2\",\n  \"description\": \"test2\",\n  \"email\": \"test2\",\n  \"slackchannel\": \"test2\",\n  \"slackchannelid\": \"test2\",\n  \"updatedBy\": 2,\n  \"updateCityId\":{{id}}\n  \n}"
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation Mutation($deleteCityId: Int!) {\n  deleteCity(id: $deleteCityId) {\n    city_id\n    location\n    description\n    email\n    slackchannel\n    slackchannelid\n    created_at\n    updated_at\n    updated_by\n  }\n}",
+						"variables": "{\n  \n  \"deleteCityId\":{{id}}\n  \n}"
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CitiesAfterDel",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							" const responseData = pm.response.json();",
+							"",
+							"  console.log(responseData.data.cities.length)",
+							"",
+							"pm.expect(responseData.data.cities.length).to.eql(pm.collectionVariables.get(\"number of cities\"))",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query Query {\n  cities {\n    city_id\n    location\n    description\n    email\n    slackchannel\n    slackchannelid\n    created_at\n    updated_at\n    updated_by\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{URL}}",
+					"host": [
+						"{{URL}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "number of cities",
+			"value": "11"
+		},
+		{
+			"key": "URL",
+			"value": "http://localhost:4000/graphql",
+			"type": "string"
+		},
+		{
+			"key": "id",
+			"value": "49"
+		}
+	]
+}
