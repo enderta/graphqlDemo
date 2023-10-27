@@ -104,7 +104,7 @@ function CityTable({ data, formatDate, handleDelete }) {
                         variant="outline-danger"
                         onClick={() => handleDelete(city.city_id)}
                       >
-                        <h6>&#10060;</h6>
+                        <h6>&#128465;&#65039;</h6>
                       </Button>
                     </td>
                   </tr>
