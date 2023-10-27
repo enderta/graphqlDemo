@@ -11,6 +11,7 @@ function CityTable({ data, formatDate, handleDelete }) {
     setSearch(event.target.value);
   };
 
+  // eslint-disable-next-line array-callback-return
   const filteredData = data.cities.filter((city) => {
     if (search === "") {
       return city;
