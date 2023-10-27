@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import AddForm from "./AddForm";
 
+
 const CREATE_CITY = gql`
   mutation CreateCity(
     $location: String
@@ -46,23 +47,38 @@ function AddCity() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
+    // Convert updated_by to a number
+    const updated_by = Number(city.updated_by);
+  
+    // Check if updated_by is less than or equal to zero
+    if (updated_by <= 0) {
+      alert("Please enter a valid number for updated_by between 1 and 3");
+      return; // Exit the function
+    }
+  
+    // Send the createCity mutation
     createCity({
       variables: {
         ...city,
-        updated_by: Number(city.updated_by),
+        updated_by: updated_by,
       },
     });
+  
+    // Reset the form
     setCity({
       location: "",
       description: "",
       email: "",
       slackchannel: "",
       slackchannelid: "",
-      updated_by: Number(""),
+      updated_by: "",
     });
+  
+    // Redirect to home
     window.location.href = "/home";
   };
+
 
   return (
     <div>

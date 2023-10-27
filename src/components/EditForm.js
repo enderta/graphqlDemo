@@ -23,6 +23,7 @@ function EditForm({ city, handleChange, handleSubmit }) {
                       name="location"
                       value={city.location}
                       onChange={handleChange}
+                      required
                     />
                   </Form.Group>
 
@@ -33,6 +34,7 @@ function EditForm({ city, handleChange, handleSubmit }) {
                       name="description"
                       value={city.description}
                       onChange={handleChange}
+                      required
                     />
                   </Form.Group>
 
@@ -43,6 +45,7 @@ function EditForm({ city, handleChange, handleSubmit }) {
                       name="email"
                       value={city.email}
                       onChange={handleChange}
+                      required
                     />
                   </Form.Group>
 
@@ -72,6 +75,7 @@ function EditForm({ city, handleChange, handleSubmit }) {
                       name="updated_by"
                       value={city.updated_by}
                       onChange={handleChange}
+                      required
                     />
                   </Form.Group>
                   <br />

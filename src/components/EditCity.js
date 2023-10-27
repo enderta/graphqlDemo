@@ -76,8 +76,18 @@ function EditCity() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    // Convert updated_by to a number
+    const updated_by = Number(city.updated_by);
+  
+    // Check if updated_by is less than or equal to zero
+    if (updated_by <= 0) {
+      alert("Please enter a valid number for updated_by between 1 and 3");
+      return; // Exit the function
+    }
+  
     try {
+      // Send the updateCity mutation
       await updateCity({
         variables: {
           id: data.city.city_id,
@@ -87,9 +97,10 @@ function EditCity() {
           slackchannel: city.slackchannel,
           slackchannelid: city.slackchannelid,
           updated_at: new Date().toISOString().slice(0, 10),
-          updated_by:Number( city.updated_by),
+          updated_by: updated_by,
         },
       });
+      // Redirect to home
       window.location.href = "/home";
     } catch (error) {
       console.error("Error updating city: ", error);

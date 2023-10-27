@@ -21,6 +21,7 @@ function AddForm({ city, handleChange, handleSubmit }) {
                       name="location"
                       value={city.location}
                       onChange={handleChange}
+                      required
                     />
                   </Form.Group>
 
@@ -31,6 +32,7 @@ function AddForm({ city, handleChange, handleSubmit }) {
                       name="description"
                       value={city.description}
                       onChange={handleChange}
+                      required
                     />
                   </Form.Group>
 
@@ -41,6 +43,7 @@ function AddForm({ city, handleChange, handleSubmit }) {
                       name="email"
                       value={city.email}
                       onChange={handleChange}
+                      required
                     />
                   </Form.Group>
 
@@ -51,6 +54,7 @@ function AddForm({ city, handleChange, handleSubmit }) {
                       name="slackchannel"
                       value={city.slackchannel}
                       onChange={handleChange}
+                 
                     />
                   </Form.Group>
 
@@ -67,10 +71,11 @@ function AddForm({ city, handleChange, handleSubmit }) {
                   <Form.Group controlId="updated_by">
                     <Form.Label>Updated By</Form.Label>
                     <Form.Control
-                      type="text"
+                      type="number"
                       name="updated_by"
                       value={Number(city.updated_by)}
                       onChange={handleChange}
+                      required
                     />
                   </Form.Group>
                   <br />
