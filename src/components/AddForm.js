@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Form, Button, Container, Row, Col } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 function AddForm({ city, handleChange, handleSubmit }) {
   return (
     <div>
@@ -77,12 +77,18 @@ function AddForm({ city, handleChange, handleSubmit }) {
                   <Button variant="outline-success" type="submit">
                     <h3>&#128640;</h3>
                   </Button>
+                  <Button style={{margin:"10px"}} variant="outline-danger" as={Link} to={"/"}>
+                    <h3>&#10060;</h3>
+                  </Button>
                 </Form>
               </Card.Body>
             </Card>
           </Col>
+           
         </Row>
+        
       </Container>
+     
     </div>
   )
 }

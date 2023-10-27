@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Form, Button, Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function EditForm({ city, handleChange, handleSubmit }) {
   return (
@@ -76,6 +77,9 @@ function EditForm({ city, handleChange, handleSubmit }) {
                   <br />
                   <Button variant="outline-success" type="submit">
                     <h3>&#128640;</h3>
+                  </Button>
+                  <Button style={{margin:"10px"}} variant="outline-danger" as={Link} to={"/"}>
+                    <h3>&#10060;</h3>
                   </Button>
                 </Form>
               </Card.Body>
