@@ -5,9 +5,9 @@ const resolvers = require('./cyf.resolver');
 const cors = require('cors');
 
 const server = new ApolloServer({
-    typeDefs,
-    resolvers,
-    introspection: true,
+    typeDefs,//it contains the schema for queries and mutations
+    resolvers,//it connects the schema and resolver
+    introspection: true, // enables introspection of the schema meaning we can query it on the front end
     cors: false, // Disable built-in CORS
 });
 
@@ -25,7 +25,7 @@ app.use(cors(
 
 const startServer = async () => {
     await server.start();
-    server.applyMiddleware({ app }); // This line is important
+    server.applyMiddleware({ app }); //connect apollo server to express
 };
 
 startServer().then(() => console.log('Server started!'));
