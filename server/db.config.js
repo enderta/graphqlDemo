@@ -14,20 +14,20 @@ db.once('open', function () {
 
 module.exports = db; */
 
-const { Pool } = require("pg");
-const dotenv = require("dotenv");
+const { Pool } = require("pg"); //import Pool from pg to connect to the database and execute queries
+const dotenv = require("dotenv"); //import dotenv to use environment variables
 
-dotenv.config();
+dotenv.config(); //use environment variables
 
-const pool = new Pool({
+const pool = new Pool({ //create a new pool to connect to the database
 
-    connectionString: process.env.DATABASE_URL,
+    connectionString: process.env.DATABASE_URL, //use the database url from environment variables
     ssl: {
-        rejectUnauthorized: false,
+        rejectUnauthorized: false, //do not reject unauthorized connections
     },
 });
 
-pool.connect(function(err) {
+pool.connect(function(err) {//connect to the database
     if (err) {
         console.error('Error connecting to database:', err);
     } else {
