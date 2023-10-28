@@ -2,6 +2,7 @@ import React from "react";
 import { gql, useQuery, useMutation } from "@apollo/client";
 import "bootstrap/dist/css/bootstrap.css";
 import Table from "./Table";
+import { Container } from "react-bootstrap";
 
 const GET_CITIES = gql`
   query GetCities {
@@ -53,8 +54,11 @@ export default function Cities() {
 
 
   return (
-    <div>
+    <div style={{backgroundColor:"black"}}>
+      <Container  className="d-flex justify-content-center align-items-center"
+      style={{ height: "100vh"}}>
       <Table  data={data} formatDate={formatDate} handleDelete={handleDelete} />
+      </Container>
     </div>
   );
 }

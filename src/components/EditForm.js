@@ -12,7 +12,7 @@ function EditForm({ city, handleChange, handleSubmit }) {
     >
       <Row>
         <Col>
-        <Card style={{width:"80vh",background:"goldenrod"}}>
+        <Card style={{width:"80vh",backgroundColor:"royalblue"}}>
             <Card.Body>
             <h3 className="text-center my-4">Edit City</h3>
               <Form onSubmit={handleSubmit}>

@@ -59,7 +59,7 @@ function CityTable({ data, formatDate, handleDelete }) {
       <Container fluid >
         <br/>
         <h3 >
-          <Button variant="outline-success" as={Link} to={"/addcity"}>
+          <Button variant="outline-warning" as={Link} to={"/addcity"}>
             <h6 style={{ margin: "10px" }}>&#10133;</h6>
           </Button>
         </h3>
@@ -81,7 +81,7 @@ function CityTable({ data, formatDate, handleDelete }) {
         </h3>
         <div className="d-flex justify-content-center">
           <div className="table-responsive">
-            <Table striped bordered hover responsive>
+            <Table striped bordered hover responsive variant="dark">
               <thead>
                 <tr className="bg-primary">
                   {Object.keys(data.cities[0])
