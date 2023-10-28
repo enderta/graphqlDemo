@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function EditForm({ city, handleChange, handleSubmit }) {
   return (
-    <div>
+    <div style={{background:"black"}}>
       <div>
     <Container
       className="d-flex justify-content-center align-items-center"
@@ -12,9 +12,9 @@ function EditForm({ city, handleChange, handleSubmit }) {
     >
       <Row>
         <Col>
-          <Card>
+        <Card style={{width:"80vh",background:"goldenrod"}}>
             <Card.Body>
-              <h3>Edit City</h3>
+            <h3 className="text-center my-4">Edit City</h3>
               <Form onSubmit={handleSubmit}>
               <Form.Group controlId="location">
                     <Form.Label>Location</Form.Label>

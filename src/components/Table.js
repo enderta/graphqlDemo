@@ -37,16 +37,28 @@ function CityTable({ data, formatDate, handleDelete }) {
   });
 
   function highlightSearchTerm(text, searchTerm) {
-  const parts = text.split(new RegExp(`(${searchTerm})`, 'gi'));
-  return <span> { parts.map((part, i) => 
-    part.toLowerCase() === searchTerm.toLowerCase() ? <span key={i} className="highlight">{part}</span> : part 
-  )} </span>;
-}
+    const parts = text.split(new RegExp(`(${searchTerm})`, "gi"));
+    return (
+      <span>
+        {" "}
+        {parts.map((part, i) =>
+          part.toLowerCase() === searchTerm.toLowerCase() ? (
+            <span key={i} className="highlight">
+              {part}
+            </span>
+          ) : (
+            part
+          )
+        )}{" "}
+      </span>
+    );
+  }
 
   return (
-    <div>
-      <Container fluid>
-        <h3 style={{ margin: "10px" }}>
+    <div >
+      <Container fluid >
+        <br/>
+        <h3 >
           <Button variant="outline-success" as={Link} to={"/addcity"}>
             <h6 style={{ margin: "10px" }}>&#10133;</h6>
           </Button>
@@ -56,8 +68,10 @@ function CityTable({ data, formatDate, handleDelete }) {
             <input
               type="text"
               className="form-control"
-              placeholder="Search"
+              value={search}
               onChange={handleSearch}
+              placeholder="Search"
+              
             />
           </div>
         </div>
@@ -67,7 +81,7 @@ function CityTable({ data, formatDate, handleDelete }) {
         </h3>
         <div className="d-flex justify-content-center">
           <div className="table-responsive">
-            <Table striped bordered hover>
+            <Table striped bordered hover responsive>
               <thead>
                 <tr className="bg-primary">
                   {Object.keys(data.cities[0])
@@ -87,10 +101,12 @@ function CityTable({ data, formatDate, handleDelete }) {
                       .filter((key) => key !== "__typename")
                       .map((key) => (
                         <td key={key}>
-  {key === "created_at" || key === "updated_at"
-    ? formatDate(city[key])
-    : city[key] ? highlightSearchTerm(city[key].toString(), search) : ""}
-</td>
+                          {key === "created_at" || key === "updated_at"
+                            ? formatDate(city[key])
+                            : city[key]
+                            ? highlightSearchTerm(city[key].toString(), search)
+                            : ""}
+                        </td>
                       ))}
                     <td>
                       <Button

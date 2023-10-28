@@ -3,16 +3,16 @@ import { Card, Form, Button, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 function AddForm({ city, handleChange, handleSubmit }) {
   return (
-    <div>
+    <div style={{background:"black"}}>
        <Container
         className="d-flex justify-content-center align-items-center"
         style={{ height: "100vh" }}
       >
         <Row>
           <Col>
-            <Card>
+            <Card style={{width:"80vh",background:"goldenrod"}}>
               <Card.Body>
-                <h3>Add City</h3>
+                <h3 className="text-center my-4">Add City</h3>
                 <Form onSubmit={handleSubmit}>
                   <Form.Group controlId="location">
                     <Form.Label>Location</Form.Label>

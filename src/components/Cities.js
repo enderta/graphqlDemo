@@ -54,7 +54,7 @@ export default function Cities() {
 
   return (
     <div>
-      <Table data={data} formatDate={formatDate} handleDelete={handleDelete} />
+      <Table  data={data} formatDate={formatDate} handleDelete={handleDelete} />
     </div>
   );
 }
