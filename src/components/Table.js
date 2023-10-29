@@ -59,7 +59,7 @@ function CityTable({ data, formatDate, handleDelete }) {
       <Container  >
         <br/>
         <h3 >
-          <Button variant="outline-warning" as={Link} to={"/addcity"}>
+          <Button variant="outline-warning" as={Link} to={"/addcity"} style={{position:"fixed"}}>
             <h6 style={{ margin: "10px" }}>&#10133;</h6>
           </Button>
         </h3>

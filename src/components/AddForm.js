@@ -3,7 +3,7 @@ import { Card, Form, Button, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 function AddForm({ city, handleChange, handleSubmit }) {
   return (
-    <div style={{background:"black"}}>
+    <div >
        <Container
         className="d-flex justify-content-center align-items-center"
         style={{ height: "100vh" }}
