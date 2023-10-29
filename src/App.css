@@ -1,12 +1,15 @@
+body{
+    margin:0;
+    padding:0;
+   
+   
+}
+
+
+
+
 .highlight{
     color:rgb(238, 9, 169);
     text-decoration:underline;
     font-weight:bold;
-    
-}
-body{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    background:"black";
 }

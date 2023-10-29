@@ -55,8 +55,8 @@ function CityTable({ data, formatDate, handleDelete }) {
   }
 
   return (
-    <div >
-      <Container fluid >
+    <div  >
+      <Container  >
         <br/>
         <h3 >
           <Button variant="outline-warning" as={Link} to={"/addcity"}>
@@ -81,17 +81,17 @@ function CityTable({ data, formatDate, handleDelete }) {
         </h3>
         <div className="d-flex justify-content-center">
           <div className="table-responsive">
-            <Table striped bordered hover responsive variant="dark">
+            <Table striped bordered hover responsive >
               <thead>
                 <tr className="bg-primary">
                   {Object.keys(data.cities[0])
                     .filter((key) => key !== "__typename")
                     .map((key) => (
-                      <th style={{ color: "goldenrod" }} key={key}>
+                      <th style={{ color: "palevioletred" }} key={key}>
                         {key}
                       </th>
                     ))}
-                  <th style={{ color: "goldenrod" }}>Actions</th>
+                  <th style={{ color: "palevioletred" }}>Actions</th>
                 </tr>
               </thead>
               <tbody>

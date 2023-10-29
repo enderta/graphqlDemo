@@ -6,7 +6,7 @@ import EditCity from "./EditCity";
 
 function Pages() {
   return (
-    <div>
+    <div >
       <Routes>
         <Route path="/*" element={<Cities />} />
         <Route path="/addcity" element={<AddCity />} />

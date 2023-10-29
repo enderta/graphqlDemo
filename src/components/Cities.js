@@ -54,11 +54,10 @@ export default function Cities() {
 
 
   return (
-    <div style={{backgroundColor:"black"}}>
-      <Container  className="d-flex justify-content-center align-items-center"
-      style={{ height: "100vh"}}>
+    <div  >
+    
       <Table  data={data} formatDate={formatDate} handleDelete={handleDelete} />
-      </Container>
+    
     </div>
   );
 }
