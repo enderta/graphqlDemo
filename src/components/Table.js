@@ -91,7 +91,7 @@ function CityTable({ data, formatDate, handleDelete }) {
                         {key}
                       </th>
                     ))}
-                  <th style={{ color: "palevioletred" }}>Actions</th>
+                  <th style={{ color: "palevioletred" }}>actions</th>
                 </tr>
               </thead>
               <tbody>
